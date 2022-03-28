@@ -14,8 +14,8 @@ from dis import Bytecode
 from solcx import compile_standard, install_solc
 install_solc("0.6.0")
 import json
-from dotenv import load_dotenv
-load_dotenv()
+from dotenv_config import Config
+config = Config()
 from web3 import Web3
 import os
 
@@ -24,10 +24,8 @@ import os
 w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
 chain_id = 1337
 my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
-print(os.getenv("PRIVATE_KEY"))
-PRIVATE_KEY = os.getenv("PRIVATE_KEY")
-
-
+print(config("PRIVATE_KEY"))
+PRIVATE_KEY = config("PRIVATE_KEY")
 
 
 
@@ -91,7 +89,7 @@ simple_storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
 #initial value of davorite number
 print(simple_storage.functions.retrieve().call())
 print("Updating")
-store_transaction = simple_storage.functions.store(3333).buildTransaction
+store_transaction = simple_storage.functions.store(33).buildTransaction
 ({
         "chainId": chain_id,
         "gasPrice": w3.eth.gas_price,
@@ -104,6 +102,5 @@ signed_store_tx = w3.eth.account.signTransaction(store_transaction,PRIVATE_KEY)
 #send
 send_store_tx = w3.eth.send_raw_transaction(signed_store_tx.rawTransaction)
 tx_receipt_2 = w3.eth.wait_for_transaction_receipt(send_store_tx)
-
 print("Updated")
 print(simple_storage.functions.retrieve().call())
