@@ -2,7 +2,7 @@
 Course - solidity - tutorial - youtube video - last left at 4:20
 
 Notes:
-4:00 ---> Just starting to get serious 
+4: ---> Just starting to get serious 
 
 
 questions:
