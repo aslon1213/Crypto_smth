@@ -2,8 +2,6 @@ from brownie import FundMe
 from helpful_scripts import *
 
 
-
-
 def fund():
     fund_me = FundMe[-1]
     account = get_account()
@@ -21,3 +19,4 @@ def withdraw():
 def main():
     fund()
     withdraw()
+

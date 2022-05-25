@@ -1,7 +1,7 @@
 from distutils.command.config import config
 from brownie import accounts, network, config, MockV3Aggregator
 from web3 import Web3
-
+FORKED_LOCAL_ENVIRONMENTS = ['mainnet-fork-dev', ]
 HELPFUL_LOCAL_BLOCKCHAIN_ENVIRONEMENTS = ["ganache-local",'development']
 PRICE = 200000000
 DECIMALS = 8
